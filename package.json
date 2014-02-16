@@ -1,0 +1,10 @@
+{
+  "name": "tipbot",
+  "description": "such money. so wow",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "3.x",
+    "node-dogecoin": "0.3.5",
+    "knox": "0.8.9"
+  }
+}
