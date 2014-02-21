@@ -30,10 +30,47 @@ TODO
 
 COMMANDS
 ====
-+ history
-+ tip @username #
-+ withdraw address
-+ balance
-+ address
-+ register
+
+###show
+get
+`/wallet/:id`
+
+###history
+get
+`/wallet/:id/history`
+
+###balance
+get
+`/wallet/:id/balance`
+
+###register
+get
+`/wallet/:id/register`
+
+###withdraw
+get
+`/wallet/:user/withdraw/:id`
+
+###tip
+post 
+`/wallet/tip`
+    
+    body: {
+      from,
+      to,
+      amount
+    }
+
+
+###backup
+get
+`/admin/wallet/backup`
+
+###info
+get
+`/admin/wallet/info`
+
+###accounts
+get
+`/admin/wallet/accounts`
 
