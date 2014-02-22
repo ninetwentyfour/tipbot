@@ -2,6 +2,8 @@ WARNING
 ====
 This is meant to be good natured and fun. I wouldn't trust it's very secure, and I wouldn't open it up to the internet. For the love of god, DON'T PUT LARGE AMOUNTS OF COINS INTO YOUR WALLET
 
+Created for use with https://gist.github.com/ninetwentyfour/9063547
+
 INSTALL
 ====
 Install dogecoind on the same machine as this app (http://www.dogeco.in/wiki/index.php/Dogecoind)
@@ -19,7 +21,7 @@ set ENV vars
 - TIPBOT_S3_SECRET
 - TIPBOT_AUTH_TOKEN
 
-run with `node server.js`
+run with `node server.js` or `forever start -l forever.log -o out.log -e err.log server.js`
 
 TODO
 ====
@@ -28,7 +30,7 @@ TODO
 - cache show calls with redis - prevent lots of doge lookups
 
 
-COMMANDS
+API
 ====
 
 ###show
