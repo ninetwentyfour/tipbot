@@ -1,3 +1,5 @@
+[![Dependency Status](https://gemnasium.com/ninetwentyfour/tipbot.png)](https://gemnasium.com/ninetwentyfour/tipbot)
+
 WARNING
 ====
 This is meant to be good natured and fun. I wouldn't trust it's very secure, and I wouldn't open it up to the internet. For the love of god, DON'T PUT LARGE AMOUNTS OF COINS INTO YOUR WALLET

@@ -71,7 +71,6 @@ exports.withdraw = function(req, res) {
 
 // tip from one user to another
 // {"from": "example", "to": "test", "amount": "0.901"}
-// needs to accept vairable ammount, right now is set to 5
 exports.tip = function(req, res) {
   var from = req.body.from;
   var to = req.body.to;
@@ -80,27 +79,31 @@ exports.tip = function(req, res) {
   dogecoin.listAccounts(function(err, accounts) {
     if(Object.keys(accounts).indexOf(from) >= 0) {
       // the sender is a real user
-      if(Object.keys(accounts).indexOf(to) >= 0) {
-        // the reciever is registered
-        // moving right away right now - should check balance first
-        dogecoin.move(from, to, amount, function(err, address) {
-          console.log('move complete');
-        });
-      }else{
-        // we need to register the reciever
-        dogecoin.getNewAddress(to, function(err, address) {
-          console.log(address);
-          // now that new user has account, we can move
-          dogecoin.move(from, to, amount, function(err, address) {
-            console.log('move complete');
-          });
-        });
-      }
-      return res.send({message: 'already registered'});
+      dogecoin.getbalance(from, function(err, result) {
+        var balance = result;
+        if(parseFloat(balance) < amount){
+          return res.send({message: 'not enough money'});
+        }else{
+          if(Object.keys(accounts).indexOf(to) >= 0) {
+            // the reciever is registered
+            dogecoin.move(from, to, amount, function(err, address) {
+              console.log('move complete');
+            });
+          }else{
+            // we need to register the reciever
+            dogecoin.getNewAddress(to, function(err, address) {
+              console.log(address);
+              // now that new user has account, we can move
+              dogecoin.move(from, to, amount, function(err, address) {
+                console.log('move complete');
+              });
+            });
+          }
+        }
+      });
     }else{
       // the sender of money needs to register first
       return res.send({message: 'please register and add coins first'});
     }
   });
-  res.send({accounts: "ok"});
 };
