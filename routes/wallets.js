@@ -88,6 +88,7 @@ exports.tip = function(req, res) {
             // the reciever is registered
             dogecoin.move(from, to, amount, function(err, address) {
               console.log('move complete');
+              return res.send({message: 'tip complete'});
             });
           }else{
             // we need to register the reciever
@@ -96,6 +97,7 @@ exports.tip = function(req, res) {
               // now that new user has account, we can move
               dogecoin.move(from, to, amount, function(err, address) {
                 console.log('move complete');
+                return res.send({message: 'tip complete'});
               });
             });
           }
