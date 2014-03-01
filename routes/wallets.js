@@ -81,7 +81,7 @@ exports.tip = function(req, res) {
       // the sender is a real user
       dogecoin.getbalance(from, function(err, result) {
         var balance = result;
-        if(parseFloat(balance) < amount){
+        if(isNaN(balance) || parseFloat(balance) < amount){
           return res.send({message: 'not enough money'});
         }else{
           if(Object.keys(accounts).indexOf(to) >= 0) {
